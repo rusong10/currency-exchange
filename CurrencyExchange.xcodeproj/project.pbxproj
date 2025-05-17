@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		00989D212DD8BDC300C7F342 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 00989D202DD8BDC300C7F342 /* DGCharts */; };
+		00989D232DD8BDC300C7F342 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 00989D222DD8BDC300C7F342 /* DGChartsDynamic */; };
+		00989D262DD8BDEA00C7F342 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 00989D252DD8BDEA00C7F342 /* Alamofire */; };
+		00989D282DD8BDEA00C7F342 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 00989D272DD8BDEA00C7F342 /* AlamofireDynamic */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		00989D042DD8BC7900C7F342 /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00989D262DD8BDEA00C7F342 /* Alamofire in Frameworks */,
+				00989D282DD8BDEA00C7F342 /* AlamofireDynamic in Frameworks */,
+				00989D232DD8BDC300C7F342 /* DGChartsDynamic in Frameworks */,
+				00989D212DD8BDC300C7F342 /* DGCharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +89,10 @@
 			);
 			name = CurrencyExchange;
 			packageProductDependencies = (
+				00989D202DD8BDC300C7F342 /* DGCharts */,
+				00989D222DD8BDC300C7F342 /* DGChartsDynamic */,
+				00989D252DD8BDEA00C7F342 /* Alamofire */,
+				00989D272DD8BDEA00C7F342 /* AlamofireDynamic */,
 			);
 			productName = CurrencyExchange;
 			productReference = 00989D042DD8BC7900C7F342 /* CurrencyExchange.app */;
@@ -107,6 +122,10 @@
 			);
 			mainGroup = 00989CFB2DD8BC7900C7F342;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				00989D1F2DD8BDC300C7F342 /* XCRemoteSwiftPackageReference "Charts" */,
+				00989D242DD8BDEA00C7F342 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 00989D052DD8BC7900C7F342 /* Products */;
 			projectDirPath = "";
@@ -333,6 +352,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		00989D1F2DD8BDC300C7F342 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChartsOrg/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		00989D242DD8BDEA00C7F342 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00989D202DD8BDC300C7F342 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00989D1F2DD8BDC300C7F342 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		00989D222DD8BDC300C7F342 /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00989D1F2DD8BDC300C7F342 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
+		};
+		00989D252DD8BDEA00C7F342 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00989D242DD8BDEA00C7F342 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		00989D272DD8BDEA00C7F342 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00989D242DD8BDEA00C7F342 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00989CFC2DD8BC7900C7F342 /* Project object */;
 }
