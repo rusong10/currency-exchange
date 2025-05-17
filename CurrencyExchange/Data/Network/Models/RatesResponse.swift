@@ -10,10 +10,10 @@ struct RatesResponse: Codable {
 
 struct ErrorResponse: Codable {
     let success: Bool
-    let error: APIError
+    let error: APIErrorResponse
 }
 
-struct APIError: Codable {
+struct APIErrorResponse: Codable {
     let code: String
     let message: String
 }
