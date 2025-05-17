@@ -140,6 +140,8 @@ class ConverterViewController: UIViewController {
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         loadingView.isHidden = true
+        
+        setupAccessibility()
     }
     
     private func setupBindings() {
@@ -244,5 +246,42 @@ class ConverterViewController: UIViewController {
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    private func setupAccessibility() {
+        fromCurrencyButton.setupAccessibility(
+            label: "From currency: \(fromCurrencyButton.title(for: .normal) ?? "")",
+            hint: "Tap to change the source currency",
+            traits: .button
+        )
+        
+        toCurrencyButton.setupAccessibility(
+            label: "To currency: \(toCurrencyButton.title(for: .normal) ?? "")",
+            hint: "Tap to change the target currency",
+            traits: .button
+        )
+        
+        swapButton.setupAccessibility(
+            label: "Swap currencies",
+            hint: "Tap to swap the source and target currencies",
+            traits: .button
+        )
+        
+        amountTextField.setupAccessibility(
+            label: "Amount to convert",
+            hint: "Enter the amount you want to convert",
+            traits: .searchField
+        )
+        
+        resultLabel.setupAccessibility(
+            label: "Conversion result",
+            traits: .staticText
+        )
+        
+        convertButton.setupAccessibility(
+            label: "Convert",
+            hint: "Tap to perform the currency conversion",
+            traits: .button
+        )
     }
 }

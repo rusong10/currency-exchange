@@ -72,6 +72,8 @@ class RatesListViewController: UIViewController {
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         loadingView.isHidden = true
+        
+        setupAccessibility()
     }
     
     private func setupBindings() {
@@ -227,6 +229,17 @@ class RatesListViewController: UIViewController {
         
         // Set initial state
         offlineStatusView.isHidden = NetworkMonitor.shared.isNetworkReachable
+    }
+    
+    private func setupAccessibility() {
+        tableView.accessibilityLabel = "Currency rates list"
+        tableView.accessibilityHint = "Shows exchange rates for different currencies"
+        
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "Change base currency"
+        navigationItem.rightBarButtonItem?.accessibilityHint = "Tap to change the base currency for conversion"
+        
+        navigationItem.leftBarButtonItem?.accessibilityLabel = "Open currency converter"
+        navigationItem.leftBarButtonItem?.accessibilityHint = "Tap to open the currency converter tool"
     }
 }
 

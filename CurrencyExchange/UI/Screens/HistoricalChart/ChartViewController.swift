@@ -107,6 +107,8 @@ class ChartViewController: UIViewController {
             loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         loadingView.isHidden = true
+        
+        setupAccessibility()
     }
     
     private func setupBindings() {
@@ -193,5 +195,24 @@ class ChartViewController: UIViewController {
     
     @objc private func refreshData() {
         viewModel.refreshData()
+    }
+    
+    private func setupAccessibility() {
+        chartView.setupAccessibility(
+            label: "Historical exchange rate chart for \(viewModel.baseCurrencyCode) to \(viewModel.targetCurrencyCode)",
+            hint: "Shows exchange rate trends over the past 7 days",
+            traits: .image
+        )
+        
+        infoLabel.setupAccessibility(
+            label: "Chart statistics",
+            traits: .staticText
+        )
+        
+        refreshButton.setupAccessibility(
+            label: "Refresh chart data",
+            hint: "Tap to refresh the historical exchange rate data",
+            traits: .button
+        )
     }
 }
