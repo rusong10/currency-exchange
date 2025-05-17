@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 
 class RatesListViewController: UIViewController {
     private let tableView: UITableView = {
@@ -22,6 +23,7 @@ class RatesListViewController: UIViewController {
         setupViews()
         setupBindings()
         viewModel.viewDidLoad()
+        setupOfflineStatusView()
     }
     
     private func setupViews() {
@@ -167,6 +169,64 @@ class RatesListViewController: UIViewController {
     @objc private func openConverterTapped() {
         let converterVC = ConverterViewController()
         navigationController?.pushViewController(converterVC, animated: true)
+    }
+    
+    private let offlineStatusView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.appError.withAlphaComponent(0.9)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let offlineLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Offline Mode - Showing cached data"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private func setupOfflineStatusView() {
+        offlineStatusView.addSubview(offlineLabel)
+        view.addSubview(offlineStatusView)
+        
+        NSLayoutConstraint.activate([
+            offlineStatusView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            offlineStatusView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            offlineStatusView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            offlineStatusView.heightAnchor.constraint(equalToConstant: 30),
+            
+            offlineLabel.centerYAnchor.constraint(equalTo: offlineStatusView.centerYAnchor),
+            offlineLabel.leadingAnchor.constraint(equalTo: offlineStatusView.leadingAnchor, constant: 16),
+            offlineLabel.trailingAnchor.constraint(equalTo: offlineStatusView.trailingAnchor, constant: -16)
+        ])
+        
+        // Adjust table view top constraint
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: offlineStatusView.bottomAnchor)
+        ])
+        
+        // Initially hide the offline status view
+        offlineStatusView.isHidden = true
+        
+        // Listen for network status changes
+        NetworkMonitor.shared.onNetworkStatusChanged = { [weak self] isReachable in
+            DispatchQueue.main.async {
+                self?.offlineStatusView.isHidden = isReachable
+                
+                // Adjust table view insets
+                if !isReachable {
+                    self?.tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+                } else {
+                    self?.tableView.contentInset = .zero
+                }
+            }
+        }
+        
+        // Set initial state
+        offlineStatusView.isHidden = NetworkMonitor.shared.isNetworkReachable
     }
 }
 
