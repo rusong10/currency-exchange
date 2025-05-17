@@ -21,7 +21,7 @@
 		00989D192DD8BC7900C7F342 /* Exceptions for "CurrencyExchange" folder in "CurrencyExchange" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Application/Info.plist,
 			);
 			target = 00989D032DD8BC7900C7F342 /* CurrencyExchange */;
 		};
